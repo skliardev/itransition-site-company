@@ -1,0 +1,28 @@
+﻿<!--Header-part-->
+<div id="header">
+  <h1><a href="#">Company</a></h1>
+</div>
+
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+    <ul class="nav">
+        <li class="">
+            <a title="" href="#">
+                <i class="icon icon-people"></i>
+                <span class="text">Mr.,@User.Identity?.Name</span>
+            </a>
+        </li>
+        <li class="">
+            <a title="" href="#">
+                <i class="icon icon-user"></i>
+                <span class="text">Messager(Future)</span>
+            </a>
+        </li>
+        <li class="">
+            <a asp-controller="Account" asp-action="Logout">
+                <i class="icon icon-share-alt"></i>
+                <span class="text">Logout</span>
+            </a>
+        </li>
+    </ul>
+</div>

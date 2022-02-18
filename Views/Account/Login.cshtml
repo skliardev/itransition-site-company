@@ -1,0 +1,49 @@
+﻿@model LoginViewModel
+@{
+    Layout = null;
+    ViewData["title"] = "LogIn";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["title"]</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/css/bootstrap-responsive.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/maruti-login.css" asp-append-version="true" />
+</head>
+<body>
+    <div id="loginbox">
+        
+        <form id="loginform" class="form-vertical" asp-controller="Account" asp-action="Login" method="post">
+            <input type="hidden" asp-for="ReturnUrl" />
+            <div class="control-group normal_text"> <h3><img src="img/logo.png" alt="Logo" /></h3></div>
+            <div class="control-group" asp-validation-summary="All"></div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on"><i class="icon-user"></i></span><input asp-for="UserName" placeholder="Username" />
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="main_input_box">
+                        <span class="add-on"><i class="icon-lock"></i></span><input asp-for="Password" placeholder="Password" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <span class="pull-left">
+                    <a asp-controller="Account" asp-action="Signin" class="btn btn-success">SignIn</a>
+                </span>
+                <span class="pull-right"><input type="submit" class="btn btn-success" value="LogIn" /></span>
+            </div>
+        </form>
+    </div> 
+    <script src="~/js/jquery.min.js" asp-append-version="true"></script>  
+    <script src="~/js/maruti.login.js" asp-append-version="true"></script> 
+</body>
+</html>

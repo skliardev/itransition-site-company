@@ -1,0 +1,80 @@
+﻿@model IEnumerable<User>
+@{
+    ViewData["title"] = "Home";
+}
+
+<div class="widget-box">
+    <form id="test" method="post">
+    <div class="widget-title">
+    <div class="btn-group">
+    <button data-toggle="dropdown" class="btn dropdown-toggle"><i class="icon-th"></i><span class="caret"></span></button>
+        <ul class="dropdown-menu">
+            <li><a asp-action="UpdateAll">Block/Unblock</a></li>
+            <li class="divider"></li>
+            <li><a asp-action="DeleteAll">Delete</a></li>
+        </ul>
+    </div>
+    </div>
+    <div class="widget-content nopadding">
+        
+        <table class="table table-striped with-check">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="title-table-checkbox" name="title-table-checkbox" /></th>
+                    <th>@Html.DisplayNameFor(m => m.Id)</th>
+                    <th>@Html.DisplayNameFor(m => m.UserName)</th>
+                    <th>@Html.DisplayNameFor(m => m.Email)</th>
+                    <th>@Html.DisplayNameFor(m => m.Published)</th>
+                    <th>@Html.DisplayNameFor(m => m.LastLogin)</th>
+                    <th>@Html.DisplayNameFor(m => m.Status)</th>
+                    <th></th>
+                </tr>
+            </thead>
+        <tbody>
+        
+        @foreach(var item in Model) {
+            <tr>
+                <td><input type="checkbox" /></td>
+                <td><input hidden name="@Html.DisplayNameFor(m => m.Id)" 
+                    value="@Html.DisplayFor(m => item.Id)" />@Html.DisplayFor(m => item.Id)</td>
+
+                <td><input hidden name="@Html.DisplayNameFor(m => m.UserName)" 
+                    value="@Html.DisplayFor(m => item.UserName)" />@Html.DisplayFor(m => item.UserName)</td>
+
+                <td><input hidden name="@Html.DisplayNameFor(m => m.Email)" 
+                    value="@Html.DisplayFor(m => item.Email)" />@Html.DisplayFor(m => item.Email)</td>
+
+                <td><input hidden name="@Html.DisplayNameFor(m => m.Published)" 
+                    value="@Html.DisplayFor(m => item.Published)" />@Html.DisplayFor(m => item.Published)</td>
+
+                <td><input hidden name="@Html.DisplayNameFor(m => m.LastLogin)" 
+                    value="@Html.DisplayFor(m => item.LastLogin)" />@Html.DisplayFor(m => item.LastLogin)</td>
+
+                <td><input hidden name="@Html.DisplayNameFor(m => m.Status)" 
+                    value="@Html.DisplayFor(m => item.Status)" />@Html.DisplayFor(m => item.Status)</td>
+
+                @*<td>@Html.DisplayFor(m => item.UserName)</td>
+                <td>@Html.DisplayFor(m => item.Email)</td>
+                <td>@Html.DisplayFor(m => item.Published)</td>
+                <td>@Html.DisplayFor(m => item.LastLogin)</td>
+                <td>@Html.DisplayFor(m => item.Status)</td>*@
+                <td>
+                    <a asp-action="Update" asp-route-name="@item.UserName" class="btn btn-warning">
+                        @if(item.Status == UserStatus.BLOCKED) 
+                        { 
+                            @:Unblock 
+                        }
+                        else 
+                        {
+                            @:Block 
+                        }
+                    </a>
+                    <a asp-action="Delete" asp-route-name="@item.UserName" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+        </table>
+    </div>
+    </form>
+</div>
